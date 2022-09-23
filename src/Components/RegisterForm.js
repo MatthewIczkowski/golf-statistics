@@ -7,8 +7,8 @@ const RegisterForm = () => {
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [email, setEmail] = useState(null);
-  const [password,setPassword] = useState(null);
-  const [confirmPassword,setConfirmPassword] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [confirmPassword, setConfirmPassword] = useState(null);
 
   const handleInputChange = (e) => {
     const {id , value} = e.target;
