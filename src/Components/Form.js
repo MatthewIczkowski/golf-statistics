@@ -2,13 +2,14 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from './Button';
+import { Link } from 'react-router-dom';
 
 export default function BasicTextFields({ title, setPassword, setEmail, handleAction }) {
 
     return (
         <div>
             <div className="heading-container">
-                <h3>{title} Form</h3>
+                <h3>{title}</h3>
             </div>
 
             <Box
@@ -29,6 +30,8 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
                 variant="outlined" 
                 onChange={(e) => setPassword(e.target.value)} 
             />
+            {title==="Register" && <p>Already have an account? <Link to="/login"> Log In </Link></p>}
+            {title==="Login" && <p>Do not have an account? <Link to="/register">Register</Link></p>}
             </Box>
             <Button title={title} handleAction={handleAction} />
         </div>

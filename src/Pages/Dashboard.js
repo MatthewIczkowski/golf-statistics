@@ -15,7 +15,7 @@ function Dashboard() {
       }
 
       if (!authToken) {
-        navigate('/login')
+        navigate('/register')
       }
   }, [navigate])
 
