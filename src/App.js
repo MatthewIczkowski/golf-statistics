@@ -1,12 +1,10 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { 
-  BrowserRouter as Router, 
+import {  
   Routes, 
   Route,
   useNavigate, 
 } from 'react-router-dom';
-import { app } from './firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
