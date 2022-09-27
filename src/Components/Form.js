@@ -19,17 +19,19 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
                 autoComplete="off"
             >
             <TextField 
-                id="email" 
+                id="email"
+                variant="filled" 
                 label="Enter Email" 
-                variant="outlined" 
                 onChange={(e) => setEmail(e.target.value)} 
             />
-            <TextField 
-                id="password" 
-                label="Enter Password" 
-                variant="outlined" 
+            <TextField
+                id="password"
+                variant="filled"
+                label="Enter Password"
+                type="password"
+                //autoComplete="current-password"
                 onChange={(e) => setPassword(e.target.value)} 
-            />
+            />  
             {title==="Register" && <p>Already have an account? <Link to="/login"> Log In </Link></p>}
             {title==="Login" && <p>Do not have an account? <Link to="/register">Register</Link></p>}
             </Box>
