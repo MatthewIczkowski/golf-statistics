@@ -12,6 +12,7 @@ const RoundTable = () => {
                     <th>Course Name</th>
                     <th>Holes</th>
                     <th>Score</th>
+                    <th>Delete Round</th>
                 </tr>
                 {docs && docs.map(doc => (
                     <tr key={doc.id}>
