@@ -53,7 +53,6 @@ td {
 /* RoundForm Stlyes */
 .form-body{
   text-align: left;
-  padding: 20px 10px;
 }
 
 .form-body > *{
@@ -69,5 +68,7 @@ td {
 }
 
 .footer{
-  text-align: center;
+  text-align: left;
+  margin-top: 5px;
+  margin-left: 5px;
 }

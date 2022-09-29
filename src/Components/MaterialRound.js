@@ -7,11 +7,22 @@ import Select from '@mui/material/Select';
 import { Typography } from '@mui/material';
 
 const MaterialRound = () => {
+  const [courseName, setCourseName] = useState('');
   const [holes, setHoles] = useState('');
+  const [score, setScore] = useState('');
 
-  const handleChange = (e) => {
-    setHoles(e.target.value);
-  };
+  const handleInputChange = (e) => {
+    const {id , value} = e.target;
+    if(id === "courseName"){
+        setCourseName(value);
+    }
+    if(id === "holes"){
+        setHoles(value);
+    }
+    if(id === "score"){
+        setScore(value);
+    }
+  }
 
   return (
     <Box
@@ -21,14 +32,14 @@ const MaterialRound = () => {
         padding: '20px',
       }}
     >
-      <Typography>Material UI Form</Typography>
+      <h3>Material UI Form</h3>
       <InputLabel id="demo-simple-select-label">Holes</InputLabel>
       <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
         value={holes}
         label="Holes"
-        onChange={handleChange}
+        onChange={handleInputChange}
       >
         <MenuItem value={9}>9</MenuItem>
         <MenuItem value={18}>18</MenuItem>
