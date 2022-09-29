@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import MaterialRound from '../Components/MaterialRound';
 import RoundForm from '../Components/RoundForm';
 import RoundTable from '../Components/RoundTable';
 
@@ -26,11 +25,7 @@ function Dashboard() {
         <RoundForm />
         <RoundTable />
       </div>
-      <div className='wrapper'>
-        <MaterialRound />
-      </div>
     </div>
-    
   )
 }
 
