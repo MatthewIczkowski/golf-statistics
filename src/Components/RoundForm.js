@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import { TextField, Button } from '@mui/material';
+import React, { useCallback, useState } from 'react';
 import { db } from '../firebase'
 import { addDoc, collection } from "firebase/firestore";
+import { 
+  TextField, 
+  Button, 
+  FormControl, 
+  Stack, FormLabel, 
+  FormControlLabel, 
+  Radio, 
+  RadioGroup } from '@mui/material';
 
 const RoundForm = () => {
   const [courseName, setCourseName] = useState('');
@@ -22,7 +25,7 @@ const RoundForm = () => {
     }
   }
 
-  const handleSubmit  = () => {
+  const handleSubmit  = useCallback(() => {
     let obj = {
       courseName : courseName,
       holes: holes,
@@ -30,46 +33,58 @@ const RoundForm = () => {
     }
     addDoc(collection(db, "rounds"), obj);
     // console.log(courseName, holes, score);
-  }
+    setCourseName('');
+    setHoles('');
+    setScore('');
+  }, [courseName, holes, score]);
 
   return (
-    <Box
-      component="form"
-      sx={{
-        width: 300,
-        height: 300,
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
-      autoComplete="off"
-    >
+    <form>
       <h3>Material UI Form</h3>
       <TextField
           id="courseName"
           label="Course Name"
           type="text"
+          variant="outlined"
           value={courseName}
           onChange={handleInputChange}
+          sx={{width: 300, margin: 4}}
       />
-      <InputLabel id="holes">Holes</InputLabel>
-      <Select
-        id="holes"
-        value={holes}
-        label="Holes"
-        autoWidth
-        onChange={(e) => setHoles(e.target.value)}
-      >
-      <MenuItem value={9}>9</MenuItem>
-      <MenuItem value={18}>18</MenuItem>
-      </Select>
-      <TextField
+      <Stack direction='row' sx={{justifyContent: 'space-between', alignItems: 'flex-end'}}>
+      <FormControl component="fieldset" variant="filled" sx={{margin: 4}}>
+          <FormLabel component="legend" htmlFor="holes-radio">
+            Number of Holes
+          </FormLabel>
+          <RadioGroup
+            aria-label="holes"
+            id="holes-radio"
+            defaultValue={18}
+            name="radio-buttons-group"
+            onChange={(e) => setHoles(e.target.value)}
+          >
+            <FormControlLabel
+              value={18}
+              control={<Radio />}
+              label="18"
+            />
+            <FormControlLabel
+              value={9}
+              control={<Radio />}
+              label="9"
+            />
+          </RadioGroup>
+        </FormControl>
+        <TextField
           id="score"
           label="Score"
           type="number"
           value={score}
           onChange={handleInputChange}
-      />
-      <Button variant="contained" onClick={handleSubmit}>Submit</Button>
-    </Box>
+          sx={{width: 300, margin: 4}}
+        />
+        <Button variant="contained" onClick={handleSubmit}>Submit</Button>
+      </Stack>
+    </form>
   )
 }
 
