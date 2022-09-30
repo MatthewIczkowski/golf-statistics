@@ -9,6 +9,7 @@ import {
   FormControlLabel, 
   Radio, 
   RadioGroup } from '@mui/material';
+import Box from '@mui/material/Box';
 
 const RoundForm = () => {
   const [courseName, setCourseName] = useState('');
@@ -39,52 +40,55 @@ const RoundForm = () => {
   }, [courseName, holes, score]);
 
   return (
-    <form>
-      <h3>Material UI Form</h3>
-      <TextField
-          id="courseName"
-          label="Course Name"
-          type="text"
-          variant="outlined"
-          value={courseName}
-          onChange={handleInputChange}
-          sx={{width: 300, margin: 4}}
-      />
-      <Stack direction='row' sx={{justifyContent: 'space-between', alignItems: 'flex-end'}}>
-      <FormControl component="fieldset" variant="filled" sx={{margin: 4}}>
-          <FormLabel component="legend" htmlFor="holes-radio">
-            Number of Holes
-          </FormLabel>
-          <RadioGroup
-            aria-label="holes"
-            id="holes-radio"
-            defaultValue={18}
-            name="radio-buttons-group"
-            onChange={(e) => setHoles(e.target.value)}
-          >
-            <FormControlLabel
-              value={18}
-              control={<Radio />}
-              label="18"
-            />
-            <FormControlLabel
-              value={9}
-              control={<Radio />}
-              label="9"
-            />
-          </RadioGroup>
-        </FormControl>
+    <Box sx={{margin: 2}}>
+      <form>
+        <h3>Submit Round Data</h3>
         <TextField
-          id="score"
-          label="Score"
-          type="number"
-          value={score}
-          onChange={handleInputChange}
-          sx={{width: 300, margin: 4}}
+            id="courseName"
+            label="Course Name"
+            type="text"
+            variant="outlined"
+            value={courseName}
+            onChange={handleInputChange}
+            sx={{width: 300, margin: 2}}
         />
-        <Button variant="contained" onClick={handleSubmit}>Submit</Button>
-      </Stack>
-    </form>
+        <TextField
+            id="score"
+            label="Score"
+            type="number"
+            value={score}
+            onChange={handleInputChange}
+            sx={{width: 100, margin: 2}}
+          />
+        <Stack direction='row' sx={{justifyContent: 'space-between', alignItems: 'flex-end'}}>
+        <FormControl component="fieldset" variant="filled" sx={{margin: 2}}>
+            <FormLabel component="legend" htmlFor="holes-radio">
+              Number of Holes
+            </FormLabel>
+            <RadioGroup
+              aria-label="holes"
+              id="holes-radio"
+              defaultValue={18}
+              name="radio-buttons-group"
+              onChange={(e) => setHoles(e.target.value)}
+            >
+              <FormControlLabel
+                value={18}
+                control={<Radio />}
+                label="18"
+              />
+              <FormControlLabel
+                value={9}
+                control={<Radio />}
+                label="9"
+              />
+            </RadioGroup>
+          </FormControl>
+          <Button variant="contained" onClick={handleSubmit}>Submit</Button>
+        </Stack>
+      </form>
+    </Box>
+    
   )
 }
 

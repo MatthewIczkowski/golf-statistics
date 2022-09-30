@@ -1,7 +1,9 @@
+import { Stack } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import RoundForm from '../Components/RoundForm';
 import RoundTable from '../Components/RoundTable';
+import Box from '@mui/material/Box';
 
 function Dashboard() {
   
@@ -20,12 +22,13 @@ function Dashboard() {
   }, [navigate])
 
   return (
-    <div>
-      <div className='wrapper'>
-        <RoundForm />
-        <RoundTable />
-      </div>
-    </div>
+     <Box sx={{m: 5}}>
+        <Stack spacing={3}>
+            <RoundForm />
+            <RoundTable />
+        </Stack>
+     </Box>
+        
   )
 }
 
