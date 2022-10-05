@@ -40,7 +40,7 @@ const RoundForm = () => {
   }, [courseName, holes, score]);
 
   return (
-    <Box sx={{margin: 2}}>
+    <Box sx={{margin: 2, width: 300}}>
       <form>
         <h3>Submit Round Data</h3>
         <TextField
@@ -69,6 +69,7 @@ const RoundForm = () => {
               aria-label="holes"
               id="holes-radio"
               defaultValue={18}
+              value={holes}
               name="radio-buttons-group"
               onChange={(e) => setHoles(e.target.value)}
             >
